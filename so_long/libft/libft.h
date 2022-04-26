@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpedro-s <jpedro-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jpedro-s < jpedro-s@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 10:20:12 by jpedro-s          #+#    #+#             */
-/*   Updated: 2021/11/29 20:23:23 by jpedro-s         ###   ########.fr       */
+/*   Updated: 2022/04/26 23:04:28 by jpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,6 @@ char	**ft_split(char const *s, char c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_base_converter(unsigned long int nbr, char *base);
 char	*ft_uitoa(unsigned int n);
+char	*get_next_line(int fd);
 
 #endif
