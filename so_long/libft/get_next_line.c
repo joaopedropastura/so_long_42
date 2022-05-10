@@ -6,11 +6,9 @@
 /*   By: jpedro-s < jpedro-s@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/14 16:36:46 by coder             #+#    #+#             */
-/*   Updated: 2022/04/26 23:12:50 by jpedro-s         ###   ########.fr       */
+/*   Updated: 2022/04/28 16:39:17 by jpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
 
 #include "libft.h"
 
@@ -27,7 +25,7 @@ static char	*get_line(char **static_buffer)
 	if (to_new_line)
 	{
 		line_size = (to_new_line - *static_buffer) + 1;
-		line = ft_substr2(*static_buffer, 0, line_size);
+		line = ft_substr_gnl(*static_buffer, 0, line_size);
 		to_new_line++;
 		temp_buffer = ft_strdup(to_new_line);
 		free(*static_buffer);

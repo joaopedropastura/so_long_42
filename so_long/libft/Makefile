@@ -6,7 +6,7 @@
 #    By: jpedro-s < jpedro-s@student.42sp.org.br    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/14 06:03:48 by jpedro-s          #+#    #+#              #
-#    Updated: 2022/04/26 23:10:55 by jpedro-s         ###   ########.fr        #
+#    Updated: 2022/04/28 16:42:22 by jpedro-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRCS =	ft_atoi.c \
 		ft_uitoa.c \
 		ft_base_converter.c \
 		get_next_line.c \
-		get_next_line_utils.c \
+		ft_substr_gnl.c \
 
 NAME = libft.a
 

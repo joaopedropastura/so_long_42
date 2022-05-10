@@ -11,7 +11,7 @@ int main(void)
 	num2 = 999;
 	num1 = 999;
 	numPalindromo = 0;
-	while(numPalindromo != 1
+	while(numPalindromo != 1)
 	{
 		result = num1*num2;
 		temp = result%100;
