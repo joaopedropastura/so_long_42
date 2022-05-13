@@ -6,7 +6,7 @@
 /*   By: jpedro-s <jpedro-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 14:33:57 by jpedro-s          #+#    #+#             */
-/*   Updated: 2022/05/10 01:19:38 by jpedro-s         ###   ########.fr       */
+/*   Updated: 2022/05/11 01:36:44 by jpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	check_rows(char *line, t_mapa *mapa)
 		return(ERR_INVALID_MAP);
 	return(0);
 }
-int	check_components(char *line, t_game *game)
+int	check_components(char *line, t_game *game, int row)
 {
 	int i;
 
@@ -36,7 +36,11 @@ int	check_components(char *line, t_game *game)
 		if(line[i] == MAP_EXIT)
 			game->n_exit++;
 		if(line[i] == PLAYER_POSITION)
+		{
 			game->n_player++;
+			game->player.x = i;
+			game->player.y = row;
+		}
 		i++;
 	}
 	return(0);
@@ -85,12 +89,10 @@ int	validate_map(t_mapa *mapa, t_game *game)
 			return(print_error(ERR_INVALID_MAP));
 		if(check_wall(mapa->map[i], mapa, i) == ERR_INVALID_ARGUMENTS)
 			return(print_error(ERR_INVALID_ARGUMENTS));
-		if (check_components(mapa->map[i], game) == ERR_INVALID_COMPONENTS)
+		if (check_components(mapa->map[i], game, i) == ERR_INVALID_COMPONENTS)
 			return(print_error(ERR_INVALID_COMPONENTS));
 	i++;
 	}
-
-
 	check_minimal_components(game);
 	return(0);
 }

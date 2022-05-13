@@ -6,7 +6,7 @@
 #    By: jpedro-s <jpedro-s@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 00:46:33 by jpedro-s          #+#    #+#              #
-#    Updated: 2022/05/10 01:02:36 by jpedro-s         ###   ########.fr        #
+#    Updated: 2022/05/13 00:13:58 by jpedro-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,11 +18,13 @@ SRCS		=	read_map.c \
 				so_long.c\
 				validate_map.c\
 				errors.c\
-				draw.c\
+				game_draw.c\
 				game_init.c\
+				game_play.c\
+				game_close.c\
 
 NAME		=	so_long
-CC			=	clang
+CC			=	clang -g3
 MLXFLAGS	=	-lmlx -Ilmlx -lXext -lX11
 CFLAGS		=	-Wall -Wextra -Werror -fPIE
 RM			=	rm -rf
