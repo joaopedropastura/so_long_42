@@ -15,23 +15,25 @@
 char	**read_map(t_mapa *mapa, char *path)
 {
 	int fd;
+	char	*result;
 
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 		return (NULL);
-	mapa->temp = ft_strdup("");
+	result = ft_strdup("");
 	mapa->row = get_next_line(fd);
 	mapa->length_base = (int)ft_strlen(mapa->row)-1;
 	while(mapa->row)
 	{
 		mapa->map_height++;
-		mapa->temp = ft_strjoin(mapa->temp, mapa->row);
+		mapa->temp = result;
+		result = ft_strjoin(mapa->temp, mapa->row);
 		free(mapa->row);
+		free(mapa->temp);
 		mapa->row = get_next_line(fd);
 	}
-	mapa->map = ft_split(mapa->temp, '\n');
-	free(mapa->temp);
-	free(mapa->row);
+	mapa->map = ft_split(result, '\n');
+	free(result);
 	close(fd);
 	return(mapa->map);
 }
