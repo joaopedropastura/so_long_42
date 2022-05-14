@@ -6,7 +6,7 @@
 #    By: jpedro-s <jpedro-s@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 00:46:33 by jpedro-s          #+#    #+#              #
-#    Updated: 2022/05/15 00:46:29 by jpedro-s         ###   ########.fr        #
+#    Updated: 2022/05/15 01:00:04 by jpedro-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ VALGRIND	=	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes 
 MAP			=	maps/map.ber
 OBJ_DIR		=	obj
 
-OBJS		=	$(SRCS:%.c=%.o)
+OBJS		=	$(SOURCES:.c=.o)
 OBJS_BONUS	=	$(SRCS_BONUS: .c=.o)
 SRCS_A		=	$(SRC_DIR)/so_long.a
 SOURCES		=	$(addprefix $(SRC_DIR)/,$(SRCS))
@@ -48,23 +48,25 @@ all: $(NAME)
 # bonus: $(NAME_BONUS)
 
 $(LIBFT_A):
-	$(MAKE) -C $(LIBFT_DIR)
 
-$(NAME): $(OBJS) $(LIBFT_A)
+$(NAME): $(OBJS)
+	$(MAKE) -C $(LIBFT_DIR)
 	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) $(MLXFLAGS) -o $(NAME)
 
 run: all
 	./so_long
 
-# valgrind: all
-# 	$(VALGRIND) ./so_long $(MAP)
+valgrind: all
+	$(VALGRIND) ./so_long $(MAP)
 
-# clean:
-# 	$(MAKE) -C $(LIBFT_DIR) fclean
+clean:
+	$(MAKE) -C $(LIBFT_DIR) clean
+	$(RM) $(OBJS)
 
-# fclean: clean
-# 	$(RM) $(NAME)
+fclean: clean
+	$(MAKE) -C $(LIBFT_DIR) fclean
+	$(RM) $(NAME)
 
-# re: fclean all
+re: fclean all
 
 .PHONY: all clean fclean re libft bonus
