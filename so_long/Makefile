@@ -6,36 +6,65 @@
 #    By: jpedro-s <jpedro-s@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/07 00:46:33 by jpedro-s          #+#    #+#              #
-#    Updated: 2022/05/13 00:13:58 by jpedro-s         ###   ########.fr        #
+#    Updated: 2022/05/15 00:46:29 by jpedro-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
 LIBFT_DIR	= ./libft
-LIBFT		= $(LIBFT_DIR)/libft.a
+LIBFT_A		= -L $(LIBFT_DIR) -lft
 
-SRCS		=	read_map.c \
-				so_long.c\
-				validate_map.c\
-				errors.c\
+SRCS		=	errors.c\
+				game_close.c\
 				game_draw.c\
 				game_init.c\
 				game_play.c\
-				game_close.c\
+				map_read.c \
+				map_validate.c\
+				so_long.c\
+# SRCS_BONUS	=
 
 NAME		=	so_long
-CC			=	clang -g3
+NAME_BONUS	=	so_long_bonus
+SRC_DIR		=	./src
+BONUS_DIR	=	./src_bonus
+CC			=	clang
+CFLAGS		=	-Wall -Wextra -Werror -g3
 MLXFLAGS	=	-lmlx -Ilmlx -lXext -lX11
-CFLAGS		=	-Wall -Wextra -Werror -fPIE
 RM			=	rm -rf
+VALGRIND	=	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes -q --tool=memcheck
+MAP			=	maps/map.ber
+OBJ_DIR		=	obj
 
-OBJS		= $(SRCS:.c=.o)
-HEADER		= ./so_long.h
+OBJS		=	$(SRCS:%.c=%.o)
+OBJS_BONUS	=	$(SRCS_BONUS: .c=.o)
+SRCS_A		=	$(SRC_DIR)/so_long.a
+SOURCES		=	$(addprefix $(SRC_DIR)/,$(SRCS))
 
-$(LIBFT):
+all: $(NAME)
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $(<:%.c=%.o)
+
+# bonus: $(NAME_BONUS)
+
+$(LIBFT_A):
 	$(MAKE) -C $(LIBFT_DIR)
-all: $(LIBFT)
-	$(CC) $(CFLAGS) $(SRCS) $(LIBFT) $(MLXFLAGS) -o $(NAME)
+
+$(NAME): $(OBJS) $(LIBFT_A)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT_A) $(MLXFLAGS) -o $(NAME)
 
 run: all
 	./so_long
+
+# valgrind: all
+# 	$(VALGRIND) ./so_long $(MAP)
+
+# clean:
+# 	$(MAKE) -C $(LIBFT_DIR) fclean
+
+# fclean: clean
+# 	$(RM) $(NAME)
+
+# re: fclean all
+
+.PHONY: all clean fclean re libft bonus
