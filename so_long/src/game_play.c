@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_play.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpedro-s <jpedro-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jpedro-s < jpedro-s@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 01:54:15 by jpedro-s          #+#    #+#             */
-/*   Updated: 2022/05/15 03:48:19 by jpedro-s         ###   ########.fr       */
+/*   Updated: 2022/05/15 04:33:06 by jpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,20 @@
 void	open_exit(t_game *game, int code)
 {
 	if (code == K_DOWN && \
-		game->mapa.map[game->player.y + 1][game->player.x] != WALL)
+		game->map.map[game->player.y + 1][game->player.x] != WALL)
 			game->player.y++;
 	if (code == K_UP && \
-		game->mapa.map[game->player.y - 1][game->player.x] != WALL)
+		game->map.map[game->player.y - 1][game->player.x] != WALL)
 			game->player.y--;
 	if (code == K_RIGHT && \
-		game->mapa.map[game->player.y][game->player.x + 1] != WALL)
+		game->map.map[game->player.y][game->player.x + 1] != WALL)
 			game->player.x++;
 	if (code == K_LEFT && \
-		game->mapa.map[game->player.y][game->player.x - 1] != WALL)
+		game->map.map[game->player.y][game->player.x - 1] != WALL)
 			game->player.x--;
 	if (game->n_colect == 0)
 	{
-		if (game->mapa.map[game->player.y][game->player.x] == MAP_EXIT)
+		if (game->map.map[game->player.y][game->player.x] == MAP_EXIT)
 		{
 			img_close(game);
 		}
@@ -37,9 +37,9 @@ void	open_exit(t_game *game, int code)
 
 void	check_collectable(t_game *game)
 {
-	if (game->mapa.map[game->player.y][game->player.x] == COLLECTIBLE)
+	if (game->map.map[game->player.y][game->player.x] == COLLECTIBLE)
 	{
-		game->mapa.map[game->player.y][game->player.x] = EMPTY_SPACE;
+		game->map.map[game->player.y][game->player.x] = EMPTY_SPACE;
 		game->n_colect--;
 	}
 }
@@ -48,20 +48,20 @@ void	check_step(t_game *game, int code)
 {
 	if (game->n_colect > 0)
 	{
-		if (code == K_DOWN && game->mapa.map[game->player.y + 1] \
-		[game->player.x] != WALL && code == K_DOWN && game->mapa.map \
+		if (code == K_DOWN && game->map.map[game->player.y + 1] \
+		[game->player.x] != WALL && code == K_DOWN && game->map.map \
 		[game->player.y + 1][game->player.x] != MAP_EXIT)
 			game->player.y++;
-		if (code == K_UP && game->mapa.map[game->player.y - 1] \
-		[game->player.x] != WALL && code == K_UP && game->mapa.map \
+		if (code == K_UP && game->map.map[game->player.y - 1] \
+		[game->player.x] != WALL && code == K_UP && game->map.map \
 		[game->player.y - 1][game->player.x] != MAP_EXIT)
 			game->player.y--;
-		if (code == K_RIGHT && game->mapa.map[game->player.y] \
-		[game->player.x + 1] != WALL && code == K_RIGHT && game->mapa.map \
+		if (code == K_RIGHT && game->map.map[game->player.y] \
+		[game->player.x + 1] != WALL && code == K_RIGHT && game->map.map \
 		[game->player.y][game->player.x + 1] != MAP_EXIT)
 			game->player.x++;
-		if (code == K_LEFT && game->mapa.map[game->player.y] \
-		[game->player.x - 1] != WALL && code == K_LEFT && game->mapa.map \
+		if (code == K_LEFT && game->map.map[game->player.y] \
+		[game->player.x - 1] != WALL && code == K_LEFT && game->map.map \
 		[game->player.y][game->player.x - 1] != MAP_EXIT)
 			game->player.x--;
 		check_collectable(game);

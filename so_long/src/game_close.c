@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game_close.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpedro-s <jpedro-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jpedro-s < jpedro-s@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 19:50:14 by jpedro-s          #+#    #+#             */
-/*   Updated: 2022/05/14 19:58:45 by jpedro-s         ###   ########.fr       */
+/*   Updated: 2022/05/15 04:33:06 by jpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ void	free_map(char **map)
 
 int	img_close(t_game *game)
 {
-	mlx_destroy_image(game->mapa.mlx, game->mapa.wall);
-	mlx_destroy_image(game->mapa.mlx, game->mapa.floor);
-	mlx_destroy_image(game->mapa.mlx, game->mapa.player);
-	mlx_destroy_image(game->mapa.mlx, game->mapa.collectable);
-	mlx_destroy_image(game->mapa.mlx, game->mapa.exit);
-	mlx_destroy_image(game->mapa.mlx, game->mapa.open_exit);
-	mlx_destroy_window(game->mapa.mlx, game->mapa.mlx_win);
-	mlx_destroy_display(game->mapa.mlx);
-	free_map(game->mapa.map);
-	free(game->mapa.mlx);
+	mlx_destroy_image(game->map.mlx, game->map.wall);
+	mlx_destroy_image(game->map.mlx, game->map.floor);
+	mlx_destroy_image(game->map.mlx, game->map.player);
+	mlx_destroy_image(game->map.mlx, game->map.collectable);
+	mlx_destroy_image(game->map.mlx, game->map.exit);
+	mlx_destroy_image(game->map.mlx, game->map.open_exit);
+	mlx_destroy_window(game->map.mlx, game->map.mlx_win);
+	mlx_destroy_display(game->map.mlx);
+	free_map(game->map.map);
+	free(game->map.mlx);
 	exit(0);
 	return (0);
 }

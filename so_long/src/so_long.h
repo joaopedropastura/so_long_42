@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jpedro-s <jpedro-s@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: jpedro-s < jpedro-s@student.42sp.org.br    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 19:59:03 by jpedro-s          #+#    #+#             */
-/*   Updated: 2022/05/15 03:34:41 by jpedro-s         ###   ########.fr       */
+/*   Updated: 2022/05/15 04:33:06 by jpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define SO_LONG_H
 
 # include <mlx.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <unistd.h>
 # include <fcntl.h>
 # include "../libft/libft.h"
 
@@ -32,7 +29,7 @@
 # define K_RIGHT	100
 # define K_QUIT		113
 
-typedef struct s_mapa
+typedef struct s_map
 {
 	void	*mlx;
 	void	*mlx_win;
@@ -53,7 +50,7 @@ typedef struct s_mapa
 	int		fd;
 	int		length_base;
 	void	*back_ground_img;
-}	t_mapa;
+}	t_map;
 
 typedef struct s_player_position {
 	int		x;
@@ -62,7 +59,7 @@ typedef struct s_player_position {
 
 typedef struct s_game
 {
-	t_mapa				mapa;
+	t_map				map;
 	t_player_position	player;
 	int					n_colect;
 	int					n_player;
@@ -83,22 +80,22 @@ typedef enum e_error {
 }	t_error;
 
 int		print_error(int error);
-int		read_map(t_mapa *mapa, char *path);
-int		validate_map(t_mapa *mapa, t_game *game);
+int		read_map(t_map *map, char *path);
+int		validate_map(t_map *map, t_game *game);
 int		check_minimal_components(t_game *game);
 int		check_components(char *line, t_game *game, int row);
-int		check_wall(char *line, t_mapa *mapa, int row);
-int		render_map(t_mapa *mapa);
-void	game_init(t_mapa *mapa);
-void	img_draw(t_mapa *mapa, void *image, int x, int y);
-int		map_draw(t_mapa *mapa, t_game *game);
-void	load_img(t_mapa *mapa);
+int		check_wall(char *line, t_map *map, int row);
+int		render_map(t_map *map);
+void	game_init(t_map *map);
+void	img_draw(t_map *map, void *image, int x, int y);
+int		map_draw(t_map *map, t_game *game);
+void	load_img(t_map *map);
 int		player_draw(t_game *game);
 int		check_key(int code, t_game *game);
 void	move_player(t_game *game, int code);
 int		img_close(t_game *game);
 int		game_draw(t_game *game);
 void	free_map(char **map);
-int		verify_line(t_mapa *mapa);
+int		verify_line(t_map *map);
 
 #endif
