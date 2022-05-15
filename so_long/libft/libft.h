@@ -6,7 +6,7 @@
 /*   By: jpedro-s <jpedro-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 10:20:12 by jpedro-s          #+#    #+#             */
-/*   Updated: 2022/05/06 19:51:43 by jpedro-s         ###   ########.fr       */
+/*   Updated: 2022/05/15 02:01:40 by jpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,11 @@ char	*ft_base_converter(unsigned long int nbr, char *base);
 char	*ft_uitoa(unsigned int n);
 char	*get_next_line(int fd);
 char	*ft_substr_gnl(char const *s, unsigned int start, size_t len);
-
-
-
+int		ft_printf(const char *format, ...);
+int		ft_type_c(int chr);
+int		ft_type_s(char *str);
+int		ft_type_p(unsigned long int ptr);
+int		ft_type_diu(int nbr, char type);
+int		ft_type_x(unsigned int to_hex, char type);
 
 #endif

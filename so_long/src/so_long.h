@@ -6,7 +6,7 @@
 /*   By: jpedro-s <jpedro-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 19:59:03 by jpedro-s          #+#    #+#             */
-/*   Updated: 2022/05/15 00:26:46 by jpedro-s         ###   ########.fr       */
+/*   Updated: 2022/05/15 02:35:47 by jpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ typedef struct s_mapa
 {
 	void	*mlx;
 	void	*mlx_win;
-	int		window_windth;
-	int		window_height;
 	int		map_width;
 	int		map_height;
 	int		x_img;
@@ -57,19 +55,6 @@ typedef struct s_mapa
 	int		flag;
 	void	*back_ground_img;
 }	t_mapa;
-
-typedef struct s_player_move
-{
-	void	*idle_down_player_img;
-	void	*idle_up_player_img;
-	void	*idle_left_player_img;
-	void	*idle_right_player_img;
-	void	*walk_down_player_img;
-	void	*walk_up_player_img;
-	void	*walk_left_player_img;
-	void	*walk_right_player_img;
-
-}	t_player_move;
 
 typedef struct s_player_position {
 	void	*ptr;

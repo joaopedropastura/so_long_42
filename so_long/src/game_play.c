@@ -6,7 +6,7 @@
 /*   By: jpedro-s <jpedro-s@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 01:54:15 by jpedro-s          #+#    #+#             */
-/*   Updated: 2022/05/14 17:18:24 by jpedro-s         ###   ########.fr       */
+/*   Updated: 2022/05/15 02:19:48 by jpedro-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void	check_collectable(t_game *game)
 		game->mapa.map[game->player.y][game->player.x] = EMPTY_SPACE;
 		game->n_colect--;
 	}
-	printf("collectables: %i\n", game->n_colect);
 }
 
 void	check_step(t_game *game, int code)
@@ -83,7 +82,7 @@ void	move_player(t_game *game, int code)
 	if (code == K_LEFT)
 		check_step(game, K_LEFT);
 	game_draw(game);
-	printf("movements: %i\n", game->moves);
+	ft_printf("movements: %i\n", game->moves);
 }
 
 int	check_key(int code, t_game *game)
